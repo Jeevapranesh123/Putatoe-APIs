@@ -104,7 +104,7 @@ The code block above represents the command to run the Flask application, and th
   - `word` (string): The word to be inserted into the database.
 - **Example:**
 
-  ```bash
+```bash
   curl -X POST -H "Content-Type: application/json" -d '{"word": "example"}' http://localhost:8000/api/insert-word
   ```
 
@@ -115,7 +115,7 @@ The code block above represents the command to run the Flask application, and th
 - **Method:** GET
 - **Example:**
 
-  ```bash
+```bash
   curl http://localhost:8000/api/get-word
 ```
 
