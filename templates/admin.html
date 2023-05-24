@@ -81,7 +81,7 @@
 
     <script>
         // Fetch data from API
-        fetch('http://localhost:8000/api/get-word')
+        fetch('http://139.59.44.12:8000/api/get-word')
             .then(response => response.text())
             .then(data => {
                 // Update card with fetched data
@@ -101,7 +101,7 @@
             var word = document.getElementById('word-input').value;
 
             // Make API call using fetch()
-            fetch('http://localhost:8000/api/insert-word', {
+            fetch('http://139.59.44.12:8000/api/insert-word', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

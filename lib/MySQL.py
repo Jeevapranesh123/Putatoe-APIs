@@ -51,6 +51,12 @@ def insert(table, word):
 
             return True
 
+    sql = "INSERT INTO " + table + " (word) VALUES (%s)"
+    val = (word,)
+    mycursor.execute(sql, val)
+    mydb.commit()
+    
+
 
 def get(table):
     mycursor.execute("SELECT * FROM " + table)

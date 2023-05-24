@@ -18,7 +18,12 @@ def hello_world():  # put application's code here
 
 @app.route('/api/get-word')
 def get_word():
-    word = get(table)[0][1]
+    data = get(table)
+    if len(data)==0:
+        insert(table,"Test")
+    data = get(table)
+    print(data)
+    word = data[0][1]
     return word
 
 @app.route('/api/insert-word',methods=['POST'])
