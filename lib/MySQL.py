@@ -4,8 +4,6 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-print(os.getenv('DB_HOST'), os.getenv('DB_USER'), os.getenv('DB_PASSWORD'), os.getenv('DB_NAME'))
-
 
 mydb = mysql.connector.connect(
   host=os.getenv('DB_HOST'),

@@ -13,7 +13,7 @@ This project provides a Flask-based API for managing words in a database. It inc
 2. Change into the project directory:
 
 ```bash
-   cd flask-word-manager
+   cd <repository-directory>
 ```
 
 3. Create a virtual environment:
