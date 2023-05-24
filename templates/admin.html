@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background-color: #f1f1f1;
+            font-family: Arial, sans-serif;
+        }
+        
+        .container {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"] {
+            width: 50%;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .form-group button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+        
+        .card {
+            width: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form id="admin-form">
+                <div class="form-group">
+
+                    <label for="word-input">Enter the Word:</label>
+                    <input type="text" id="word-input" name="word" placeholder="Enter a word" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Word in Database:</h5>
+                <p class="card-text" id="cardText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Fetch data from API
+        fetch('http://localhost:8000/api/get-word')
+            .then(response => response.text())
+            .then(data => {
+                // Update card with fetched data
+                document.getElementById('cardText').textContent = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+
+    <script>
+        // Event listener for form submission
+        document.getElementById('admin-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get the input value
+            var word = document.getElementById('word-input').value;
+
+            // Make API call using fetch()
+            fetch('http://localhost:8000/api/insert-word', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        word: word
+                    })
+                })
+                .then(function(response) {
+                    // Handle response from the API
+                    if (response.ok) {
+                        // Success message
+                        alert('Word sent successfully!');
+                        window.location.reload();
+                    } else {
+                        // Error message
+                        alert('Failed to send the word. Please try again.');
+                    }
+                })
+                .catch(function(error) {
+                    // Error message
+                    console.log(error);
+                    alert('An error occurred. Please try again later.' + error);
+                });
+        });
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
