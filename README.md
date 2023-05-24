@@ -6,25 +6,25 @@ This project provides a Flask-based API for managing words in a database. It inc
 
 1. Clone the repository:
 
-   ```bash
+```bash
    git clone <repository_url>
 ```
 
 2. Change into the project directory:
 
-   ```bash
+```bash
    cd flask-word-manager
 ```
 
 3. Create a virtual environment:
 
-   ```bash
+```bash
    python3 -m venv venv
 ```
 
 4. Activate the virtual environment:
 
-   ```bash
+```bash
    # For Linux/Mac
 source venv/bin/activate
 
@@ -35,7 +35,7 @@ venv\Scripts\activate
 
 5. Install the dependencies:
 
-   ```bash
+```bash
    pip install -r requirements.txt
 ```
 
@@ -91,7 +91,7 @@ flask run
 ```
 
 
-The code block above represents the command to run the Flask application, and the URL `http://localhost:5000/` specifies the location where the development server will be accessible.
+The code block above represents the command to run the Flask application, and the URL `http://localhost:8000/` specifies the location where the development server will be accessible.
 
 
 ## API Endpoints
@@ -105,7 +105,7 @@ The code block above represents the command to run the Flask application, and th
 - **Example:**
 
   ```bash
-  curl -X POST -H "Content-Type: application/json" -d '{"word": "example"}' http://localhost:5000/api/insert-word
+  curl -X POST -H "Content-Type: application/json" -d '{"word": "example"}' http://localhost:8000/api/insert-word
   ```
 
 
@@ -116,17 +116,17 @@ The code block above represents the command to run the Flask application, and th
 - **Example:**
 
   ```bash
-  curl http://localhost:5000/api/get-word
+  curl http://localhost:8000/api/get-word
 ```
 
 ## Website Endpoint
 
 ### Admin Portal
 
-- **URL:** `http://localhost:5000/admin`
+- **URL:** `http://localhost:8000/admin`
 - **Description:** This endpoint provides a form for updating the word in the database.
 
-  Visit `http://localhost:5000/admin` in a web browser and fill out the form to update the word.
+  Visit `http://localhost:8000/admin` in a web browser and fill out the form to update the word.
 
 
 ## License
